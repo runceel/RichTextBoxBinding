@@ -1,0 +1,33 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RichTextBoxBinding.Views"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:Behaviors="clr-namespace:RichTextBoxBinding.Behaviors"
+        xmlns:Prism="http://prismlibrary.com/"
+        Prism:ViewModelLocator.AutoWireViewModel="True"
+        x:Class="RichTextBoxBinding.Views.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="300"
+        Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <RichTextBox>
+            <i:Interaction.Behaviors>
+                <Behaviors:BindableDocumentBehavior Document="{Binding Document, Mode=TwoWay}"
+                                                    IsOneWay="False" />
+            </i:Interaction.Behaviors>
+        </RichTextBox>
+        <RichTextBox IsReadOnly="True"
+                     Grid.Row="1">
+            <i:Interaction.Behaviors>
+                <Behaviors:BindableDocumentBehavior Document="{Binding OutputDocument, Mode=OneWay}" />
+            </i:Interaction.Behaviors>
+        </RichTextBox>
+    </Grid>
+</Window>
